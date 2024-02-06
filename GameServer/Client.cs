@@ -47,7 +47,7 @@ namespace GameServer
 
                 stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
 
-                // TODO: send welcome packet
+                ServerSend.Welcome(id, "Welcome to the server!");
             }
 
             public void SendData(Packet _packet)
