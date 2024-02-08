@@ -169,7 +169,7 @@ namespace GameServer
 
                 ThreadManager.ExecuteOnMainThread(() =>
                 {
-                    using(Packet _packet = new Packet())
+                    using(Packet _packet = new Packet(_packetBytes))
                     {
                         int _packetId = _packet.ReadInt();
                         Server.packageHandlers[_packetId](id, _packet);

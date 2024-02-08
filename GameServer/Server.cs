@@ -32,7 +32,7 @@ class Server
         tcpListener.Start();
         tcpListener.BeginAcceptTcpClient(new AsyncCallback(TCPConnectCallback), null);
 
-        udpListener = new UdpClient();
+        udpListener = new UdpClient(Port);
         udpListener.BeginReceive(UDPReceiveCallback, null);
 
         Console.WriteLine($"Server started on {Port}.");
