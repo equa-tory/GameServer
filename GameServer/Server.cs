@@ -42,7 +42,7 @@ class Server
     private static void TCPConnectCallback(IAsyncResult _result)
     {
         TcpClient _client = tcpListener.EndAcceptTcpClient(_result);
-        tcpListener.BeginAcceptSocket(TCPConnectCallback, null);
+        tcpListener.BeginAcceptTcpClient(TCPConnectCallback, null);
         Console.WriteLine($"Incoming connection from {_client.Client.RemoteEndPoint}...");
 
         for (int i = 1; i <= MaxPlayers; i++)
@@ -122,6 +122,7 @@ class Server
         packageHandlers = new Dictionary<int, PackageHandler>()
         {
             { (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
+            { (int)ClientPackets.playerMovement, ServerHandle.PlayerMovement },
         };
         Console.WriteLine("Initialized packets.");
     }
